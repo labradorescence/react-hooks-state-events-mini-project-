@@ -1,16 +1,15 @@
-import React from "react";
+import React from 'react'
 
-function TaskList(props) {
-  let eachTasks = props.tasks.map(eachTask => {
-   //return console.log(eachTask.text)
-    return eachTask.text
-  })
- return (
-  <>
-    <h1>{eachTasks}</h1>
-    
-  </>
- 
-)}
-
-export default TaskList;
+export default function TaskList(props) {
+  return (
+    <div>
+      {props.tasks.map((eachTask, i) => {
+        return(
+          <div className="tasks" key={i}>
+           {eachTask.text}
+          </div>
+          )
+      })}
+    </div>
+  )
+}
