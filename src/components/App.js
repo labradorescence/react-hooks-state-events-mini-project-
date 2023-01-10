@@ -8,12 +8,16 @@ console.log("Here's the data you're working with");
 console.log({ CATEGORIES, TASKS });
 
 function App() {
+
+  const filterTask = (currentTask) => {
+    console.log(currentTask)
+  }
   return (
     <div className="App">
       <h2>My tasks</h2>
-      <CategoryFilter />
+      <CategoryFilter CATEGORIES = {CATEGORIES} filterTask = {filterTask}/>
       <NewTaskForm />
-      <TaskList />
+      <TaskList TASKS = {TASKS}/>
     </div>
   );
 }

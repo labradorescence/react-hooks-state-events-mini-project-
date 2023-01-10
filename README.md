@@ -3,7 +3,7 @@
 ## Learning Goals
 
 - Use state and events to make components dynamic
-- Implement controlled components
+- Implement controlled components 
 
 ## Introduction
 
