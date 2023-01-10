@@ -1,15 +1,19 @@
 import React from 'react'
+import Task from "./Task"
 
-export default function TaskList(props) {
+export default function TaskList({tasksProp, onDelete}) {
   return (
-    <div>
-      {props.tasks.map((eachTask, i) => {
-        return(
-          <div className="tasks" key={i}>
-           {eachTask.text}
-          </div>
-          )
-      })}
+    <div className="tasks" >
+      {tasksProp.map(eachTask => {
+        return <Task 
+                    key={eachTask.text}
+    
+                    taskText={eachTask.text} 
+                    category={eachTask.category}
+
+                    onDelete={onDelete}
+                />
+        })}
     </div>
   )
 }
