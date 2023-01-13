@@ -1,13 +1,11 @@
-import React, {useState} from "react";
+import React from "react";
 import Task from "./Task.js"
 
-function TaskList({TASKS}) {
-
-  const [ tasks, setTasks ] = useState(TASKS)
+function TaskList({tasks, handleRemoveTask}) {
 
   const removeTask = (text) => {
     // console.log("removing a task in set tasks area")
-    setTasks(tasks.filter(eachTask => eachTask.text !== text))
+    handleRemoveTask(text)
   }
 
   const task = tasks.map((eachTask, idx) => (
