@@ -9,7 +9,8 @@ console.log({ CATEGORIES, TASKS });
 
 function App() {
   
-  let [tasks, setTasks] = useState(TASKS)
+  const [tasks, setTasks] = useState(TASKS)
+  const [selectedCategory, setSelectedCategory] = useState("All")
   
   function onDelete(taskText){
     //console.log(taskText)
@@ -17,13 +18,36 @@ function App() {
     //console.log(filteredTask)
     setTasks(filteredTask)
   }
-  
+
+  const handleSelectedCategory = (text) => {
+    setSelectedCategory(text)
+  }
+
+  const handleSubmit = (newTask) => {
+      setTasks([...tasks, newTask])
+  }
+
+  const taskToDisplay = tasks.filter((task) => {
+    if(selectedCategory === "All") return true
+    return task.category === selectedCategory
+  })
+
   return (
     <div className="App">
       <h2>My tasks</h2>
-      <CategoryFilter />
-      <NewTaskForm />
-      <TaskList tasksProp={tasks} categories={CATEGORIES} onDelete={onDelete}/>
+          <CategoryFilter 
+            categories={CATEGORIES}
+            selectedCategory = {selectedCategory}
+            handleSelectedCategory = {handleSelectedCategory}
+            />
+          <NewTaskForm 
+            categories={CATEGORIES.filter((category) => category !== "All")}
+            onTaskFormSubmit={handleSubmit} 
+            />
+          <TaskList 
+            tasksProp={taskToDisplay} 
+            categories={CATEGORIES} 
+            onDelete={onDelete}/>
     </div>
   );
 }
